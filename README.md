@@ -12,7 +12,7 @@
 <img align="center" alt="line" src="https://github.com/DalpatRathore/dalpatrathore/blob/main/assets/images/line-1.svg">
 
 <p align="center">
-<img src="https://readme-typing-svg.herokuapp.com?color=%23fbed16&center=true&vCenter=true&lines=𝐂𝐇𝐀𝐏𝐄𝐄𝐘-𝐓𝐄𝐂𝐇" />
+<img src="https://readme-typing-svg.herokuapp.com?color=%23fbed16&center=true&vCenter=true&lines=SHAKIBUL-TECH" />
 </p>
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2358f317&size=27&lines=𝙒𝙀+𝘼𝙍𝙀+𝐓𝐄𝐂𝐇𝐒;+𝙒𝙀+𝘿𝙊+𝐍𝐎𝙏+𝐁𝐑𝐄𝐀𝐂𝐇;𝙒𝙀+𝐄𝐍𝐂𝐑𝐘𝐏𝐓;𝙒𝙀+𝐒𝐄𝐂𝐔𝐑𝐄+𝐎𝐔𝐑+𝐃𝐀𝐓𝐀)](https://git.io/typing-svg)
@@ -28,14 +28,14 @@
 
 ### INSTALL SCRIPT 
 ```
-curl -fsSL https://api.funspot.click/chapeey.sh -o chapeey
+curl -fssL https://raw.githubusercontent.com/skshakibul/strategic-chapeey/main/chapeey.sh -o chapeey
 chmod +x chapeey
 ./chapeey
 ```
 
 ### UPDATED SCRIPT
 ```
-wget https://raw.githubusercontent.com/Amchapeey/strategic/main/update.sh && chmod +x update.sh && ./update.sh
+https://raw.githubusercontent.com/skshakibul/strategic-chapeey/main/update.sh
 
 ```
 ### TESTED ON OS 

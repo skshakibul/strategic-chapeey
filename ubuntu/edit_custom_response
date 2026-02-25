@@ -1,0 +1,226 @@
+#!/bin/bash
+
+# COLOR DEFINITIONS
+clear
+y='\033[1;33m' #yellow
+BGX="\033[42m"
+CYAN="\033[96m"
+z="\033[96m"
+RED='\033[0;31m'
+NC='\033[0m'
+gray="\e[1;30m"
+Blue="\033[0;34m"
+orange_bold='\033[1;38;5;214m'
+green='\033[0;32m'
+grenbo="\e[92;1m"
+purple="\033[1;95m"
+bold_white="\033[1;97m"
+YELL='\033[0;33m'
+yellow='\033[1;33m'
+
+# NEW 2025 COLORS
+neon_green='\033[38;5;46m'
+cyber_blue='\033[38;5;51m'
+matrix_green='\033[38;5;40m'
+electric_purple='\033[38;5;129m'
+gold='\033[38;5;220m'
+silver='\033[38;5;250m'
+
+# Enhanced symbols
+FIRE="[*]"
+SKULL="[X]"
+SHIELD="[S]"
+TERMINAL="[T]"
+MATRIX="[M]"
+CYBER="[C]"
+HACK="[H]"
+KEY="[K]"
+BOMB="[B]"
+GHOST="[G]"
+TIME="[T]"
+BROKEN_HEART="[XX]"
+
+# Expiry Check Function
+checking_sc() {
+    ipsaya=$(wget -qO- ipinfo.io/ip 2>/dev/null)
+    data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+    date_list=$(date +"%Y-%m-%d" -d "$data_server" 2>/dev/null)
+    data_ip="https://raw.githubusercontent.com/Amchapeey/strategic/main/keygen"
+    
+    useexp=$(wget -qO- $data_ip 2>/dev/null | grep $ipsaya | awk '{print $3}')
+    if [[ $date_list < $useexp ]]; then
+        echo -ne
+    else
+        clear
+        echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+        echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+        echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+        echo -e ""
+        echo -e "            ${RED}PERMISSION DENIED !${NC}"
+        echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
+        echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
+        echo -e "             \033[0;33mContact Admin :${NC}"
+        echo -e "      \033[0;36mTelegram${NC} t.me/chapeey"
+        echo -e "      ${GREEN}WhatsApp${NC} wa.me/254704348959"
+        echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+        sleep 5
+        exit 1
+    fi
+}
+
+# Run expiry check
+checking_sc
+
+# Custom Response Editor Function
+edit_custom_response() {
+    clear
+    echo -e "${z}╭══════════════════════════════════════════════════════════╮${NC}"
+    echo -e "${z}│                    ${bold_white}CUSTOM RESPONSE EDITOR${NC}                   ${z}│${NC}"
+    echo -e "${z}╰══════════════════════════════════════════════════════════╯${NC}"
+    echo -e ""
+    echo -e " ${CYBER}${FIRE}${NC} ${yellow}Custom Response Configuration${NC}"
+    echo -e " ${z}────────────────────────────────────────────────────────────${NC}"
+    echo -e ""
+    echo -e " ${green}[INFO]${NC} This will customize your VPN proxy welcome message"
+    echo -e " ${green}[INFO]${NC} Only the HTTP 101 status line will be changed"
+    echo -e " ${green}[INFO]${NC} WebSocket headers remain permanent for compatibility"
+    echo -e ""
+
+    # Check current custom response
+    if [ -f "/usr/bin/custom_response.txt" ]; then
+        echo -e " ${CYAN}[CURRENT]${NC} Custom response file exists:"
+        echo -e " ${gray}$(cat /usr/bin/custom_response.txt)${NC}"
+        echo -e ""
+    else
+        echo -e " ${YELL}[NOTICE]${NC} No custom response file found - using default"
+        echo -e ""
+    fi
+
+    echo -e " ${z}Choose an option:${NC}"
+    echo -e ""
+    echo -e " ${green}[1]${NC} Edit Custom Response"
+    echo -e " ${green}[2]${NC} View Current Response"
+    echo -e " ${green}[3]${NC} Reset to Default"
+    echo -e " ${green}[4]${NC} Test Response Format"
+    echo -e " ${green}[5]${NC} Refresh Connection Service"
+    echo -e " ${RED}[0]${NC} Back to Main Menu"
+    echo -e ""
+    echo -ne " ${cyber_blue}${FIRE}${bold_white}└──╼ ${TERMINAL}${NC} "
+    read -p "" choice
+
+    case $choice in
+        1)
+            echo -e ""
+            echo -e " ${CYAN}[EDITOR]${NC} Opening custom response editor..."
+            echo -e " ${YELL}[TIP]${NC} You can use HTML tags for styling"
+            echo -e " ${YELL}[TIP]${NC} Example: <font color='red'>Text</font>"
+            echo -e ""
+
+            # Create the file with proper permissions
+            sudo touch /usr/bin/custom_response.txt
+            sudo chmod 644 /usr/bin/custom_response.txt
+
+            # Open nano editor
+            sudo nano /usr/bin/custom_response.txt
+
+            # Verify the file was created/edited
+            if [ -f "/usr/bin/custom_response.txt" ] && [ -s "/usr/bin/custom_response.txt" ]; then
+                echo -e ""
+                echo -e " ${green}[SUCCESS]${NC} Custom response saved successfully!"
+                echo -e " ${green}[SUCCESS]${NC} File permissions set to 644"
+                echo -e ""
+                echo -e " ${CYAN}[PREVIEW]${NC} Your custom response:"
+                echo -e " ${gray}$(cat /usr/bin/custom_response.txt)${NC}"
+            else
+                echo -e ""
+                echo -e " ${YELL}[WARNING]${NC} File is empty or wasn't saved"
+                echo -e " ${YELL}[WARNING]${NC} Default response will be used"
+            fi
+            ;;
+
+        2)
+            echo -e ""
+            if [ -f "/usr/bin/custom_response.txt" ]; then
+                echo -e " ${CYAN}[CURRENT RESPONSE]${NC}"
+                echo -e " ${z}────────────────────────────────────────────────────────────${NC}"
+                echo -e " ${gray}$(cat /usr/bin/custom_response.txt)${NC}"
+                echo -e " ${z}────────────────────────────────────────────────────────────${NC}"
+            else
+                echo -e " ${YELL}[NO CUSTOM RESPONSE]${NC}"
+                echo -e " ${gray}Using default: SCRIPT BY CHAPEEY (Telegram: t.me/chapeey)${NC}"
+            fi
+            ;;
+
+        3)
+            echo -e ""
+            echo -e " ${YELL}[CONFIRM]${NC} Reset to default response? (y/n): "
+            read -p "" confirm
+            if [[ $confirm == "y" || $confirm == "Y" ]]; then
+                sudo rm -f /usr/bin/custom_response.txt
+                echo -e " ${green}[SUCCESS]${NC} Reset to default response"
+            else
+                echo -e " ${CYAN}[CANCELLED]${NC} No changes made"
+            fi
+            ;;
+
+        4)
+            echo -e ""
+            echo -e " ${CYAN}[TEST FORMAT]${NC} Response format structure:"
+            echo -e " ${z}────────────────────────────────────────────────────────────${NC}"
+            echo -e " ${gray}HTTP/1.1 101 [YOUR_CUSTOM_CONTENT]${NC}"
+            echo -e " ${gray}Upgrade: websocket${NC}"
+            echo -e " ${gray}Connection: Upgrade${NC}"
+            echo -e " ${gray}Sec-WebSocket-Accept: foo${NC}"
+            echo -e " ${gray}X-Powered-By: Chapeey${NC}"
+            echo -e " ${z}────────────────────────────────────────────────────────────${NC}"
+            echo -e ""
+            echo -e " ${green}[INFO]${NC} Only the content after '101' can be customized"
+            echo -e " ${green}[INFO]${NC} Headers below are permanent for compatibility"
+            ;;
+
+        5)
+            echo -e ""
+            echo -e " ${GREEN}[REFRESH]${NC} Refreshing connection service..."
+            echo -e " ${CYAN}[INFO]${NC} This will restart the WebSocket proxy service"
+            echo -e ""
+            
+            if systemctl is-active --quiet ws; then
+                if systemctl restart ws; then
+                    echo -e " ${green}[SUCCESS]${NC} Connection service refreshed successfully"
+                    echo -e " ${CYAN}[STATUS]${NC} Service is now: $(systemctl is-active ws)"
+                else
+                    echo -e " ${RED}[ERROR]${NC} Failed to refresh connection service"
+                    echo -e " ${YELL}[TIP]${NC} Check service logs with: systemctl status ws"
+                fi
+            else
+                echo -e " ${YELL}[NOTICE]${NC} Connection service was not running"
+                echo -e " ${GREEN}[ACTION]${NC} Starting connection service..."
+                if systemctl start ws; then
+                    echo -e " ${green}[SUCCESS]${NC} Connection service started successfully"
+                else
+                    echo -e " ${RED}[ERROR]${NC} Failed to start connection service"
+                fi
+            fi
+            ;;
+
+        0)
+            clear
+            echo -e " ${green}Returning to main menu...${NC}"
+            sleep 1
+            exit 0
+            ;;
+
+        *)
+            echo -e ""
+            echo -e " ${RED}[ERROR]${NC} Invalid option"
+            ;;
+    esac
+
+    echo -e ""
+    echo -e " ${green}Press any key to continue...${NC}"
+    read -n 1 -s -r
+    edit_custom_response
+}
+
+# Main execution
+edit_custom_response

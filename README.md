@@ -28,9 +28,7 @@
 
 ### INSTALL SCRIPT 
 ```
-curl -fssL https://raw.githubusercontent.com/skshakibul/strategic-chapeey/main/chapeey.sh -o chapeey
-chmod +x chapeey
-./chapeey
+curl -fssL https://raw.githubusercontent.com/skshakibul/strategic-chapeey/main/shakibul.sh -o install.sh && chmod +x install.sh && ./install.sh
 ```
 
 ### UPDATED SCRIPT

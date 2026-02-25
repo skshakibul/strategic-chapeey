@@ -1,40 +1,22 @@
 #!/bin/bash
 # SHAKIBUL-TECH UNLOCKED PANEL
 
-# রঙ সেট করা
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
-CYAN='\033[0;36m'
-NC='\033[0m'
+# প্রয়োজনীয় প্যাকেজ ইনস্টল
+apt update && apt install -y unzip wget curl
 
-clear
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${YELLOW}       WELCOME TO SHAKIBUL-TECH UNLOCKED        ${NC}"
-echo -e "${YELLOW}            Developer: Shakibul                 ${NC}"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+# আপনার গিটহাবের পাথ সেট করা
+REPO="https://raw.githubusercontent.com/skshakibul/strategic-chapeey/main/ubuntu"
 
-# সার্ভার আপডেট এবং প্রয়োজনীয় টুলস ইনস্টল
-echo -e "${GREEN}[+] Updating system and installing dependencies...${NC}"
-apt update -y && apt upgrade -y
-apt install -y wget curl unzip git
+# মেনু জিপ ফাইল ডাউনলোড করা
+echo "Downloading panel files..."
+wget -q ${REPO}/menu.zip -O /tmp/menu.zip
 
-# প্যানেল ফাইল ডাউনলোড (আপনার নিজস্ব গিটহাব থেকে)
-REPO="https://raw.githubusercontent.com/skshakibul/strategic-chapeey/main"
-
-echo -e "${GREEN}[+] Fetching panel files from GitHub...${NC}"
-# এখানে আপনার মূল প্যানেল বা মেনু ফাইলের নাম দিন (যেমন: menu.zip বা ubuntu.zip)
-wget -q ${REPO}/ubuntu/menu.zip -O /tmp/menu.zip
-
+# ফাইল আনজিপ এবং সেটআপ
 if [ -f /tmp/menu.zip ]; then
     unzip -o /tmp/menu.zip -d /usr/local/sbin/
     chmod +x /usr/local/sbin/*
     rm /tmp/menu.zip
-    echo -e "${GREEN}[SUCCESS] Panel installed and unlocked!${NC}"
-    echo -e "${YELLOW}Type 'menu' to start the panel.${NC}"
+    echo -e "\e[32mInstallation Complete! Type 'menu' to start.\e[0m"
 else
-    echo -e "${RED}[ERROR] Failed to download panel files. Check your GitHub link.${NC}"
+    echo -e "\e[31mError: menu.zip not found in your GitHub ubuntu folder!\e[0m"
 fi
-
-# প্যানেল চালু করা
-menu
